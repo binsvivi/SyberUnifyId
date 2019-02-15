@@ -1,0 +1,208 @@
+/*
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#define LOG_NDEBUG 0
+#define LOG_NDDEBUG 0
+
+#define LOG_TAG "UnifyIdManager-JNI"
+
+#include "jni.h"
+//#include "JNIHelp.h"
+//#include "android_runtime/AndroidRuntime.h"
+//#include "android_runtime/Log.h"
+//#include <data/cxslide.h>
+//#include <data/cxsensordata.h>
+//#include <module/cxslidemodule.h>
+#include <UnifyIdManager.h>
+//#include <utils/Log.h>
+
+// ----------------------------------------------------------------------------
+
+namespace android
+{
+
+//static ContainerIpcClientInterface *gContainerIpcClientInterface;
+//static ContainerIpcInterface *gContainerIpcManager;
+
+static const char* const kClassContainerService = "com/syber/internal/UnifyIdManager";
+static bool g_bAttatedT;
+static JavaVM *g_JavaVM;
+static UnifyIdManager * unifyid_manager;
+static JNIEnv *GetEnv()
+{
+ int status;
+    JNIEnv *envnow = NULL;
+    status = g_JavaVM->GetEnv((void **)&envnow, JNI_VERSION_1_4);
+    if(status < 0)
+    {
+        status = g_JavaVM->AttachCurrentThread(&envnow, NULL);
+        if(status < 0)
+        {
+            return NULL;
+        }
+        g_bAttatedT = true;
+    }
+    return envnow;
+}
+
+static void DetachCurrent()
+{
+    if(g_bAttatedT)
+    {
+        g_JavaVM->DetachCurrentThread();
+    }
+}
+
+    /*
+static status_t checkAndClearExceptionFromCallback(JNIEnv* env, const char* methodName) {
+    if (env->ExceptionCheck()) {
+        ALOGE("An exception was thrown by callback '%s'.", methodName);
+        LOGE_EX(env);
+        env->ExceptionClear();
+      DetachCurrent();
+        return UNKNOWN_ERROR;
+    }
+    DetachCurrent();
+    return OK;
+}*/
+
+static void
+android_server_UnifyId_requestTrainSVM(JNIEnv *env, jobject thiz, jstring featPath, jstring savePath)
+{
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+    const char* c_save_path = env->GetStringUTFChars(savePath, NULL);
+   
+    std::string ffeat(c_feat_path);
+    std::string fsave(c_save_path);
+
+
+    //ALOGV("requestTrainSVM");
+    unifyid_manager->trainSVM(ffeat.c_str(), fsave.c_str());
+}
+
+static void
+android_server_UnifyId_TrainGesture(JNIEnv *env, jobject thiz, jstring featPath, jstring savePath)
+{
+    //ALOGV("TrainGesture");
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+    const char* c_save_path = env->GetStringUTFChars(savePath, NULL);
+   
+    std::string ffeat(c_feat_path);
+    std::string fsave(c_save_path);
+
+
+    unifyid_manager->trainGesture(ffeat.c_str(), fsave.c_str());
+}
+
+static jdouble
+android_server_UnifyId_testSlide(JNIEnv *env, jobject thiz, jstring modulePath, jstring featPath)
+{
+    //ALOGV("testSlide");
+    const char* c_module_path = env->GetStringUTFChars(modulePath, NULL);
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+   
+    std::string fmodule(c_module_path);
+    std::string ffeat(c_feat_path);
+
+    double score = unifyid_manager->testSlide(fmodule.c_str(), ffeat.c_str());
+    return score;
+}
+
+static jdouble
+android_server_UnifyId_testGesture(JNIEnv *env, jobject thiz, jstring modulePath, jstring featPath)
+{
+    //ALOGV("testSlide");
+    const char* c_module_path = env->GetStringUTFChars(modulePath, NULL);
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+   
+    std::string fmodule(c_module_path);
+    std::string ffeat(c_feat_path);
+
+    double score = unifyid_manager->testGesture(fmodule.c_str(), ffeat.c_str());
+    return score;
+}
+
+static void
+android_server_UnifyId_featSlides(JNIEnv *env, jobject thiz, jstring samplePath, jstring featPath)
+{
+    //ALOGV("featSlides");
+    const char* c_sample_path = env->GetStringUTFChars(samplePath, NULL);
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+   
+    std::string fsample(c_sample_path);
+    std::string ffeat(c_feat_path);
+
+
+    unifyid_manager->featSlide(fsample.c_str(), ffeat.c_str());
+}
+
+static void
+android_server_UnifyId_featGesture(JNIEnv *env, jobject thiz, jstring samplePath, jstring featPath)
+{
+    //ALOGV("featSlides");
+    const char* c_sample_path = env->GetStringUTFChars(samplePath, NULL);
+    const char* c_feat_path = env->GetStringUTFChars(featPath, NULL);
+   
+    std::string fsample(c_sample_path);
+    std::string ffeat(c_feat_path);
+
+
+
+    unifyid_manager->featGesture(fsample.c_str(), ffeat.c_str());
+}
+
+
+
+static void
+android_server_UnifyId_native_setup(JNIEnv *env, jobject thiz)
+{
+    //ALOGV("native_setup");
+    g_bAttatedT = false;
+   // g_JavaVM = AndroidRuntime::getJavaVM();
+    unifyid_manager = new UnifyIdManager();
+  
+}
+
+static void
+android_server_UnifyId_release(JNIEnv *env,  jobject thiz)
+{
+    //ALOGV("native_release");
+}
+
+// ----------------------------------------------------------------------------
+static JNINativeMethod gMethods[] = {
+    {"native_setup",    "()V",                   (void *)android_server_UnifyId_native_setup},
+    {"native_featSlides",    "(Ljava/lang/String;Ljava/lang/String;)V",           (void *)android_server_UnifyId_featSlides},
+    {"native_featGesture",    "(Ljava/lang/String;Ljava/lang/String;)V",           (void *)android_server_UnifyId_featGesture},
+    {"native_TrainGesture",    "(Ljava/lang/String;Ljava/lang/String;)V",           (void *)android_server_UnifyId_TrainGesture},
+    {"native_TrainSVM",    "(Ljava/lang/String;Ljava/lang/String;)V",           (void *)android_server_UnifyId_requestTrainSVM},
+    {"native_testSlide",    "(Ljava/lang/String;Ljava/lang/String;)D",           (void *)android_server_UnifyId_testSlide},
+    {"native_testGesture",    "(Ljava/lang/String;Ljava/lang/String;)D",           (void *)android_server_UnifyId_testGesture},
+};
+
+// This function only registers the native methods
+int register_android_server_UnifyId(JNIEnv *env)
+{
+    g_JavaVM = AndroidRuntime::getJavaVM();
+
+    jclass clazz = env->FindClass(kClassContainerService);
+    if (clazz == NULL) {
+        ALOGE("Can't find com/syber/internal/UnifyIdManager");
+        return -1;
+    }
+    return jniRegisterNativeMethods(env, kClassContainerService, gMethods, NELEM(gMethods));
+}
+
+};

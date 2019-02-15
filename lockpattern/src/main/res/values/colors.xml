@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_b2b2b2">#B2B2B2</color>
+    <color name="blue_78d2f6">#78D2F6</color>
+    <color name="blue_01aaee">#01AAEE</color>
+    <color name="blue_00aaee">#00AAEE</color>
+    <color name="red_f3323b">#F3323B</color>
+
+    <color name="colorDialogBack">#FFFFFF</color>
+    <color name="colorPrimary">#382e25</color>
+    <color name="colorPrimaryDark">#22272b</color>
+    <color name="colorAccent">#202020</color>
+    <color name="colorVersion">#737373</color>
+    <color name="colorStatus">#202020</color>
+    <color name="roundColor">#D7D7D7</color>
+    <color name="roundProgressColor">#A0A0A0</color>
+    <color name="twoButtonBackground">#d3d3d3</color>
+    <color name="lineColor">#b9b9b9</color>
+    <color name="roundFinishedColor">#FFAB40</color>
+    <color name="roundTextColor">#282828</color>
+    <color name="sizeTextColor">#999999</color>
+    <color name="tipTextColor">#282828</color>
+    <color name="tipTextErrorColor">#e60011</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+</resources>

@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">LockUnifyId</string>
+
+
+    <!-- Splash activity  -->
+    <string name="splash_activity">SplashActivity</string>
+
+    <!-- Gesture login activity -->
+    <string name="gesture_forget_gesture">忘记手势密码</string>
+    <string name="gesture_setting_gesture">手势学习设置</string>
+    <string name="gesture_default">请输入手势密码</string>
+    <string name="gesture_error">手势密码输入错误</string>
+    <string name="gesture_correct">输入正确</string>
+
+    <!-- Create gesture activity -->
+    <string name="create_gesture_activity">CreateGestureActivity</string>
+    <string name="create_gesture_default">绘制解锁图案</string>
+    <string name="create_gesture_correct">再次绘制解锁图案</string>
+    <string name="create_gesture_less_error">至少连接4个点，请重新输入</string>
+    <string name="create_gesture_confirm_error">与上一次绘制不一致，请重新绘制</string>
+    <string name="create_gesture_confirm_correct">设置成功</string>
+    <string name="create_gesture_reset">重新设置</string>
+    
+    <!-- Setting activity-->
+    <string name="openunifyid">重置学习</string>
+    <string name="returnfromunifyid">返回</string>
+    <string name="closeunifyid">进入学习</string>
+    <string name="generatekey">重新生成key</string>
+    <string name="name0">UnifyId 设备号: </string>
+    <string name="value0"></string>
+    <string name="uploadname">UnifyId 数据上传状态: </string>
+    <string name="uploadvalue"></string>
+    <string name="uploadname2">UnifyId 数据上传地址: </string>
+    <string name="modelname1">Gesture 状态: </string>
+    <string name="modelname2">Slide 状态: </string>
+    <string name="modelname3">Unlock 状态: </string>
+    <string name="modelvalue1"></string>
+    <string name="modelvalue2"></string>
+    <string name="modelvalue3"></string>
+    <string name="verifyname1"> Gesture 认证: </string>
+    <string name="verifyname2"> 学习次数设置: </string>
+    <string name="verifyname3"> Unlock 认证: </string>
+    <string name="verifyname4">学习进度: </string>
+    <string name="verifyvalue1"></string>
+    <string name="verifyvalue2"></string>
+    <string name="verifyvalue3"></string>
+    <string name="verifyvalue4"></string>
+
+</resources>

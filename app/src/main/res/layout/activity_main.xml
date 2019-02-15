@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.syber.unifyidsensordemo.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/openunifyid" />
+
+    <Button
+        android:id="@+id/return_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/returnfromunifyid" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/closeunifyid" />
+    <Button
+        android:id="@+id/keybtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generatekey" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name0" />
+
+        <TextView
+            android:id="@+id/value0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/value0" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uploadname" />
+
+        <TextView
+            android:id="@+id/uploadvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/uploadvalue" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uploadname2" />
+
+        <EditText
+            android:id="@+id/uploadUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入服务器地址"
+            android:paddingLeft="2dp"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modelname1" />
+
+        <TextView
+            android:id="@+id/modelvalue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/modelvalue1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyname1" />
+        <TextView
+            android:id="@+id/verifyvalue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyvalue1" />
+        <Spinner
+            android:id="@+id/gesturemodelspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modelname2" />
+
+        <TextView
+            android:id="@+id/modelvalue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/modelvalue2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyname2" />
+        <TextView
+            android:id="@+id/verifyvalue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyvalue2" />
+
+        <Spinner
+            android:id="@+id/slidemodelspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modelname3" />
+
+        <TextView
+            android:id="@+id/modelvalue3"
+            android:layout_width="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:layout_height="wrap_content"
+            android:text="@string/modelvalue3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyname3" />
+        <TextView
+            android:id="@+id/verifyvalue3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:text="@string/verifyvalue3" />
+        <Spinner
+            android:id="@+id/unlockmodelspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verifyname4" />
+
+        <TextView
+            android:id="@+id/verifyvalue4"
+            android:layout_width="wrap_content"
+	    android:layout_marginLeft="10dip"
+            android:layout_height="wrap_content"
+            android:text="@string/verifyvalue4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.star.lockpattern.widget.RoundProgressBar
+            android:id="@+id/roundProgressBar"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="0dp" />
+    </LinearLayout>
+
+</LinearLayout>
+    <!--TextView
+        android:id="@+id/sample_text"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"/-->
+</RelativeLayout>
